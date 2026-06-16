@@ -22,12 +22,13 @@
         </div>
         <nav id="drawer-nav">
             <a href="index.html" class="drawer-link active">🏠 Accueil</a>
+            <a href="publier.html" class="drawer-link">📤 Publier</a>
             <a href="recherche.html" class="drawer-link">🔍 Recherche</a>
             <a href="profil.html" class="drawer-link">👤 Mon Profil</a>
             <a href="#" class="drawer-link" onclick="signOut(); closeDrawer();">🚪 Déconnexion</a>
         </nav>
         <div id="drawer-footer">
-            <small>Free Fire Community v2.0</small>
+            <small>Free Fire Community v3.0</small>
         </div>
     </div>
 
@@ -47,18 +48,16 @@
     <main id="main-content">
         <div id="content-wrapper">
             <div id="page-content">
-                <h2>💬 Commentaires en direct</h2>
-                <div id="comments-list"></div>
-
-                <div id="comment-form" style="display:none;">
-                    <div class="comment-form">
-                        <textarea id="comment-text" placeholder="Pose une question..." maxlength="500"></textarea>
-                        <button id="submit-comment">📤 Envoyer</button>
-                    </div>
+                <h2>📰 Fil d'actualité</h2>
+                
+                <!-- Bouton publier -->
+                <div style="text-align:center;margin-bottom:20px;">
+                    <a href="publier.html" style="display:inline-block;padding:12px 30px;background:#e94560;color:white;border-radius:25px;text-decoration:none;font-weight:bold;">📤 Publier une vidéo</a>
                 </div>
 
-                <div id="login-message">
-                    <p>🔒 <a href="#" onclick="signInWithGoogle()">Connecte-toi</a> pour commenter.</p>
+                <!-- Fil des vidéos -->
+                <div id="videos-feed">
+                    <p style="color:#555;text-align:center;padding:20px 0;">⏳ Chargement des vidéos...</p>
                 </div>
             </div>
         </div>
@@ -67,8 +66,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="script.js"></script>
     <script src="auth.js"></script>
     <script src="drawer.js"></script>
+    <script src="video.js"></script>
 </body>
     </html>
