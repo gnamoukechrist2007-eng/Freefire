@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Free Fire Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>🎮 Free Fire Community</h1>
+        
+        <!-- SECTION AUTHENTIFICATION -->
+        <div id="auth-section">
+            <div id="user-info">
+                <span>Non connecté</span>
+            </div>
+            <button id="login-btn" onclick="signInWithGoogle()">🔑 Se connecter avec Google</button>
+            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪 Déconnexion</button>
+        </div>
+
+        <p>Bienvenue sur la communauté ! Partage tes astuces, vidéos et expériences.</p>
+        
+        <!-- SECTION COMMENTAIRES -->
+        <div id="comment-section">
+            <h2>💬 Commentaires en direct</h2>
+            <div id="comments-list">
+                <!-- Les commentaires chargent ici automatiquement -->
+            </div>
+
+            <!-- Formulaire (visible seulement si connecté) -->
+            <div id="comment-form" style="display:none;">
+                <div class="comment-form">
+                    <textarea id="comment-text" placeholder="Partage ton expérience, pose une question..." maxlength="500"></textarea>
+                    <button id="submit-comment">📤 Envoyer</button>
+                </div>
+            </div>
+            
+            <!-- Message si non connecté -->
+            <div id="login-message">
+                <p>🔒 <a href="#" onclick="signInWithGoogle()">Connecte-toi</a> pour commenter.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    
+    <!-- Tes scripts -->
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
