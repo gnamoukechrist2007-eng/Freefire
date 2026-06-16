@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📤 Publier - Free Fire Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MENU LATÉRAL -->
+    <div id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="drawer">
+        <div id="drawer-header">
+            <div id="drawer-avatar">
+                <img id="drawer-avatar-img" src="https://ui-avatars.com/api/?name=User&size=80&background=e94560&color=fff" alt="Avatar">
+            </div>
+            <div id="drawer-user-info">
+                <div id="drawer-name">Non connecté</div>
+                <div id="drawer-email"></div>
+            </div>
+        </div>
+        <nav id="drawer-nav">
+            <a href="index.html" class="drawer-link">🏠 Accueil</a>
+            <a href="publier.html" class="drawer-link active">📤 Publier</a>
+            <a href="recherche.html" class="drawer-link">🔍 Recherche</a>
+            <a href="profil.html" class="drawer-link">👤 Mon Profil</a>
+            <a href="#" class="drawer-link" onclick="signOut(); closeDrawer();">🚪 Déconnexion</a>
+        </nav>
+        <div id="drawer-footer">
+            <small>Free Fire Community v3.0</small>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="main-header">
+        <div id="header-left">
+            <button id="menu-btn" onclick="toggleDrawer()">☰</button>
+            <h1>🔥 Free Fire</h1>
+        </div>
+        <div id="header-right">
+            <button id="login-btn" onclick="signInWithGoogle()">🔑 Connexion</button>
+            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪</button>
+        </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main id="main-content">
+        <div id="content-wrapper">
+            <div id="page-content">
+                <h2>📤 Publier une vidéo</h2>
+                <p style="color:#888;margin-bottom:20px;">Partage un lien YouTube avec la communauté.</p>
+
+                <div id="publish-form">
+                    <div class="form-group">
+                        <label>🔗 Lien YouTube</label>
+                        <input type="text" id="video-url" placeholder="https://www.youtube.com/watch?v=..." style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:rgba(255,255,255,0.05);color:white;">
+                    </div>
+                    <div class="form-group">
+                        <label>📝 Titre</label>
+                        <input type="text" id="video-title" placeholder="Titre de ta vidéo" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:rgba(255,255,255,0.05);color:white;">
+                    </div>
+                    <div class="form-group">
+                        <label>📖 Description</label>
+                        <textarea id="video-description" placeholder="Décris ta vidéo..." style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:rgba(255,255,255,0.05);color:white;min-height:80px;resize:vertical;"></textarea>
+                    </div>
+                    <button id="publish-btn" style="padding:12px 30px;background:#e94560;color:white;border:none;border-radius:25px;cursor:pointer;font-weight:bold;width:100%;">📤 Publier</button>
+                    <div id="publish-status" style="margin-top:10px;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
+    <script src="drawer.js"></script>
+    <script src="publier.js"></script>
+</body>
+</html>
