@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidéo - Free Fire Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MENU LATÉRAL -->
+    <div id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="drawer">
+        <div id="drawer-header">
+            <div id="drawer-avatar">
+                <img id="drawer-avatar-img" src="https://ui-avatars.com/api/?name=User&size=80&background=e94560&color=fff" alt="Avatar">
+            </div>
+            <div id="drawer-user-info">
+                <div id="drawer-name">Non connecté</div>
+                <div id="drawer-email"></div>
+            </div>
+        </div>
+        <nav id="drawer-nav">
+            <a href="index.html" class="drawer-link">🏠 Accueil</a>
+            <a href="publier.html" class="drawer-link">📤 Publier</a>
+            <a href="recherche.html" class="drawer-link">🔍 Recherche</a>
+            <a href="profil.html" class="drawer-link">👤 Mon Profil</a>
+            <a href="#" class="drawer-link" onclick="signOut(); closeDrawer();">🚪 Déconnexion</a>
+        </nav>
+        <div id="drawer-footer">
+            <small>Free Fire Community v3.0</small>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="main-header">
+        <div id="header-left">
+            <button id="menu-btn" onclick="toggleDrawer()">☰</button>
+            <h1>🔥 Free Fire</h1>
+        </div>
+        <div id="header-right">
+            <button id="login-btn" onclick="signInWithGoogle()">🔑 Connexion</button>
+            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪</button>
+        </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main id="main-content">
+        <div id="content-wrapper">
+            <div id="page-content">
+                <div id="video-player">
+                    <div id="video-iframe-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                        <iframe id="video-iframe" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <h2 id="video-title-display" style="margin:15px 0 5px;">Titre de la vidéo</h2>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+                        <span id="video-author" style="color:#888;">Par <strong></strong></span>
+                        <div>
+                            <button id="like-btn" style="padding:8px 16px;border:none;border-radius:20px;cursor:pointer;background:#333;color:white;">❤️ <span id="like-count">0</span></button>
+                        </div>
+                    </div>
+                    <p id="video-description-display" style="color:#aaa;margin-bottom:20px;"></p>
+                </div>
+
+                <div id="video-comments">
+                    <h3>💬 Commentaires</h3>
+                    <div id="video-comments-list"></div>
+                    <div id="video-comment-form" style="margin-top:15px;">
+                        <textarea id="video-comment-text" placeholder="Écris un commentaire..." style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:rgba(255,255,255,0.05);color:white;min-height:60px;resize:vertical;"></textarea>
+                        <button id="video-comment-btn" style="padding:10px 20px;background:#e94560;color:white;border:none;border-radius:20px;cursor:pointer;margin-top:8px;">💬 Commenter</button>
+                    </div>
+                </div>
+
+                <a href="index.html" style="display:inline-block;margin-top:20px;color:#e94560;text-decoration:none;">← Retour à l'accueil</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
+    <script src="drawer.js"></script>
+    <script src="video-detail.js"></script>
+</body>
+              </html>
