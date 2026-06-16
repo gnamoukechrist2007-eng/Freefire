@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,49 +7,68 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <h1>🎮 Free Fire Community</h1>
-        
-        <!-- SECTION AUTHENTIFICATION -->
-        <div id="auth-section">
-            <div id="user-info">
-                <span>Non connecté</span>
+
+    <!-- MENU LATÉRAL -->
+    <div id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="drawer">
+        <div id="drawer-header">
+            <div id="drawer-avatar">
+                <img id="drawer-avatar-img" src="https://ui-avatars.com/api/?name=User&size=80&background=e94560&color=fff" alt="Avatar">
             </div>
-            <button id="login-btn" onclick="signInWithGoogle()">🔑 Se connecter avec Google</button>
-            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪 Déconnexion</button>
+            <div id="drawer-user-info">
+                <div id="drawer-name">Non connecté</div>
+                <div id="drawer-email"></div>
+            </div>
         </div>
+        <nav id="drawer-nav">
+            <a href="index.html" class="drawer-link active">🏠 Accueil</a>
+            <a href="recherche.html" class="drawer-link">🔍 Recherche</a>
+            <a href="profil.html" class="drawer-link">👤 Mon Profil</a>
+            <a href="#" class="drawer-link" onclick="signOut(); closeDrawer();">🚪 Déconnexion</a>
+        </nav>
+        <div id="drawer-footer">
+            <small>Free Fire Community v2.0</small>
+        </div>
+    </div>
 
-        <p>Bienvenue sur la communauté ! Partage tes astuces, vidéos et expériences.</p>
-        
-        <!-- SECTION COMMENTAIRES -->
-        <div id="comment-section">
-            <h2>💬 Commentaires en direct</h2>
-            <div id="comments-list">
-                <!-- Les commentaires chargent ici automatiquement -->
-            </div>
+    <!-- HEADER -->
+    <header id="main-header">
+        <div id="header-left">
+            <button id="menu-btn" onclick="toggleDrawer()">☰</button>
+            <h1>🔥 Free Fire</h1>
+        </div>
+        <div id="header-right">
+            <button id="login-btn" onclick="signInWithGoogle()">🔑 Connexion</button>
+            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪</button>
+        </div>
+    </header>
 
-            <!-- Formulaire (visible seulement si connecté) -->
-            <div id="comment-form" style="display:none;">
-                <div class="comment-form">
-                    <textarea id="comment-text" placeholder="Partage ton expérience, pose une question..." maxlength="500"></textarea>
-                    <button id="submit-comment">📤 Envoyer</button>
+    <!-- CONTENU -->
+    <main id="main-content">
+        <div id="content-wrapper">
+            <div id="page-content">
+                <h2>💬 Commentaires en direct</h2>
+                <div id="comments-list"></div>
+
+                <div id="comment-form" style="display:none;">
+                    <div class="comment-form">
+                        <textarea id="comment-text" placeholder="Pose une question..." maxlength="500"></textarea>
+                        <button id="submit-comment">📤 Envoyer</button>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Message si non connecté -->
-            <div id="login-message">
-                <p>🔒 <a href="#" onclick="signInWithGoogle()">Connecte-toi</a> pour commenter.</p>
+
+                <div id="login-message">
+                    <p>🔒 <a href="#" onclick="signInWithGoogle()">Connecte-toi</a> pour commenter.</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    
-    <!-- Tes scripts -->
     <script src="script.js"></script>
     <script src="auth.js"></script>
+    <script src="drawer.js"></script>
 </body>
-</html>
+    </html>
