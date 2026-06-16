@@ -1,59 +1,44 @@
-// auth.js - Gestion de l'authentification Google
+// auth.js - Connexion Google
 
-// CONNEXION AVEC GOOGLE
 function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
-        .then((result) => {
-            const user = result.user;
-            console.log("Bienvenue " + user.displayName);
-            updateUI(user);
-        })
-        .catch((error) => {
-            console.error("Erreur de connexion", error);
-            alert("Erreur : " + error.message);
-        });
+        .then(result => { updateUI(result.user); updateDrawer(result.user); closeDrawer(); })
+        .catch(error => alert("Erreur : " + error.message));
 }
 
-// DÉCONNEXION
 function signOut() {
     firebase.auth().signOut()
-        .then(() => {
-            console.log("Déconnecté");
-            updateUI(null);
-        })
-        .catch((error) => {
-            console.error("Erreur de déconnexion", error);
-        });
+        .then(() => { updateUI(null); updateDrawer(null); closeDrawer(); window.location.href = 'index.html'; })
+        .catch(error => alert("Erreur : " + error.message));
 }
 
-// METTRE À JOUR L'INTERFACE
 function updateUI(user) {
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
-    const userInfo = document.getElementById('user-info');
-    const commentForm = document.getElementById('comment-form');
-    const loginMsg = document.getElementById('login-message');
 
     if (user) {
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'inline-block';
-        userInfo.innerHTML = `
-            <img src="${user.photoURL || 'https://ui-avatars.com/api/?name=' + user.displayName}" alt="Avatar" class="avatar">
-            <span>${user.displayName}</span>
-        `;
-        commentForm.style.display = 'block';
-        loginMsg.style.display = 'none';
     } else {
         loginBtn.style.display = 'inline-block';
         logoutBtn.style.display = 'none';
-        userInfo.innerHTML = `<span>Non connecté</span>`;
-        commentForm.style.display = 'none';
-        loginMsg.style.display = 'block';
     }
 }
 
-// SURVEILLER L'ÉTAT DE CONNEXION
-firebase.auth().onAuthStateChanged((user) => {
-    updateUI(user);
-});
+function updateDrawer(user) {
+    const nameEl = document.getElementById('drawer-name');
+    const emailEl = document.getElementById('drawer-email');
+    const avatarEl = document.getElementById('drawer-avatar-img');
+    if (user) {
+        nameEl.textContent = user.displayName || 'Utilisateur';
+        emailEl.textContent = user.email || '';
+        avatarEl.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&size=80&background=e94560&color=fff`;
+    } else {
+        nameEl.textContent = 'Non connecté';
+        emailEl.textContent = '';
+        avatarEl.src = 'https://ui-avatars.com/api/?name=User&size=80&background=e94560&color=fff';
+    }
+}
+
+firebase.auth().onAuthStateChanged(user => { updateUI(user); updateDrawer(user); });
