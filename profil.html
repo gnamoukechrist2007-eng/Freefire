@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - Free Fire Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="drawer">
+        <div id="drawer-header">
+            <div id="drawer-avatar">
+                <img id="drawer-avatar-img" src="https://ui-avatars.com/api/?name=User&size=80&background=e94560&color=fff" alt="Avatar">
+            </div>
+            <div id="drawer-user-info">
+                <div id="drawer-name">Non connecté</div>
+                <div id="drawer-email"></div>
+            </div>
+        </div>
+        <nav id="drawer-nav">
+            <a href="index.html" class="drawer-link">🏠 Accueil</a>
+            <a href="publier.html" class="drawer-link">📤 Publier</a>
+            <a href="recherche.html" class="drawer-link">🔍 Recherche</a>
+            <a href="profil.html" class="drawer-link active">👤 Mon Profil</a>
+            <a href="#" class="drawer-link" onclick="signOut(); closeDrawer();">🚪 Déconnexion</a>
+        </nav>
+        <div id="drawer-footer">
+            <small>Free Fire Community v3.0</small>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div id="header-left">
+            <button id="menu-btn" onclick="toggleDrawer()">☰</button>
+            <h1>🔥 Free Fire</h1>
+        </div>
+        <div id="header-right">
+            <button id="login-btn" onclick="signInWithGoogle()">🔑 Connexion</button>
+            <button id="logout-btn" onclick="signOut()" style="display:none;">🚪</button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div id="content-wrapper">
+            <div id="page-content">
+                <h2>👤 Mon Profil</h2>
+
+                <div id="profil-container">
+                    <div id="couverture-container">
+                        <img id="couverture" src="https://via.placeholder.com/800x200/1a1a2e/e94560?text=Ma+Couverture" alt="Couverture">
+                        <button id="edit-couverture" style="display:none;">📷 Couverture</button>
+                    </div>
+                    
+                    <div id="profil-info">
+                        <div id="avatar-container">
+                            <img id="avatar" src="https://ui-avatars.com/api/?name=User&size=120&background=e94560&color=fff" alt="Avatar">
+                            <button id="edit-avatar" style="display:none;">📷</button>
+                        </div>
+                        <div id="info-container">
+                            <input type="text" id="display-name" placeholder="Ton pseudo" disabled>
+                            <textarea id="bio" placeholder="Ta biographie..." disabled></textarea>
+                            <button id="edit-profil" style="display:none;">✏️ Modifier</button>
+                            <button id="save-profil" style="display:none;">💾 Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mes vidéos -->
+                <div style="margin-top:30px;">
+                    <h3 style="color:#e94560;">📹 Mes vidéos</h3>
+                    <div id="my-videos-list" style="margin-top:10px;">
+                        <p style="color:#555;">⏳ Chargement...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
+    <script src="drawer.js"></script>
+    <script src="profil.js"></script>
+</body>
+  </html>
